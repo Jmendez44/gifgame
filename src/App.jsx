@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Main.css";
 import GifSearch from "./Components/gifSearch.jsx";
 import InPlay from "./Components/InPlay";

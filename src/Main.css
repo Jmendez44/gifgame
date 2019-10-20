@@ -177,8 +177,26 @@ body {
   border: black solid;
 }
 
-.App .search-container {
-  overflow: scroll;
+.App .chat-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 50%;
+  width: 75%;
+}
+
+.App .chat-container .chat {
+  width: 25%;
+  height: 100%;
+  background: white;
+}
+
+.App .chat-container .search-container {
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -189,11 +207,11 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 50%;
-  width: 75%;
+  height: 100%;
+  width: 74%;
 }
 
-.App .search-container .search-bar {
+.App .chat-container .search-container .search-bar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -207,20 +225,21 @@ body {
   height: 10%;
 }
 
-.App .search-container .search-bar input {
+.App .chat-container .search-container .search-bar input {
   width: 70%;
   height: 75%;
   border: black 3px solid;
-  margin-right: .25%;
+  margin-right: 0.25%;
+  padding: 0.5%;
 }
 
-.App .search-container .search-bar button {
+.App .chat-container .search-container .search-bar button {
   height: 75%;
   border: black 3px solid;
   background: white;
 }
 
-.App .search-container .gif-select {
+.App .chat-container .search-container .gif-select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -232,15 +251,34 @@ body {
   height: 100%;
 }
 
-.App .search-container .gif-select div {
+.App .chat-container .search-container .gif-select .loading {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 50%;
-  margin: 0.25%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 10%;
+  width: 100%;
 }
 
-.App .search-container .gif-select div video {
+.App .chat-container .search-container .gif-select div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 50%;
+  width: 16%;
+  margin: 0.25%;
+  overflow: hidden;
+}
+
+.App .chat-container .search-container .gif-select div img {
   -o-object-fit: fill;
      object-fit: fill;
   height: 100%;
