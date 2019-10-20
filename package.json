@@ -7,7 +7,8 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-infinite-scroller": "^1.2.4",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "simplebar-react": "^2.0.2-corejs2-1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import InfiniteScroll from "react-infinite-scroller";
+
 import axios from "axios";
 
 const GifSearch = () => {
@@ -19,8 +19,13 @@ const GifSearch = () => {
       observer.current = new IntersectionObserver(
         entries => {
           if (entries[0].isIntersecting && totalCount) {
+            if (offset >= totalCount) {
+              return setLoading(false);
+            }
+            // console.log(offset);
+            // console.log(totalCount);
             // console.log("visible");
-            return setOffset(prevOffset => prevOffset + 24);
+            setOffset(prevOffset => prevOffset + 24);
           }
         },
         { threshold: 1.0 }
@@ -64,14 +69,14 @@ const GifSearch = () => {
             ...new Set([
               ...prevGifs,
               ...data.map(i => {
-                console.log(i)
-                return i.images.original.url;
+                // console.log(i)
+                return i.images.original_mp4.mp4;
               })
             ])
           ];
         });
 
-        setTotalCount(res.data.pagination.total_count > 0);
+        setTotalCount(res.data.pagination.total_count);
         setLoading(false);
         // console.log(data);
       })
@@ -81,6 +86,8 @@ const GifSearch = () => {
 
     return () => cancel();
   }, [search, offset]);
+
+  // console.log(totalCount)
 
   return (
     <div className="chat-container">
@@ -92,25 +99,26 @@ const GifSearch = () => {
             type="text"
             onChange={handleSearch}
           />
+          <div className="btns">
+            <button>btn1</button><button>btn2</button>
+          </div>
         </form>
         <div className="gif-select">
           {gifs.map((gif, index) => {
             if (gifs.length === index + 1) {
               return (
                 <div ref={lastGifElRef} key={index}>
-                  <img src={gif} alt="" />
-                  {/* <video autoPlay loop playsInline>
+                  <video autoPlay loop playsInline>
                     <source src={gif} type="video/mp4" />
-                  </video> */}
+                  </video>
                 </div>
               );
             } else {
               return (
                 <div key={index}>
-                  <img src={gif} alt="" />
-                  {/* <video autoPlay loop playsInline>
+                  <video autoPlay loop playsInline>
                     <source src={gif} type="video/mp4" />
-                  </video> */}
+                  </video>
                 </div>
               );
             }
